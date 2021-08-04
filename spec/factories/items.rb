@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :item do
     product_name  { Faker::Games::Pokemon.name }
     description { Faker::Games::Pokemon.location }
-    price { rand(300..9999999) }
+    price { rand(300..9_999_999) }
     category_id { 2 }
     postage_id { 2 }
     status_id { 2 }
