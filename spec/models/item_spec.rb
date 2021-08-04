@@ -37,8 +37,20 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Category can't be blank"
       end
 
+      it 'カテゴリーが--(id1)を選択してると登録できない' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Category can't be blank"
+      end
+
       it '商品の状態が選択されてないと登録できない' do
         @item.status_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Status can't be blank"
+      end
+
+      it '商品の状態が--(id1)を選択してると登録できない' do
+        @item.status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Status can't be blank"
       end
@@ -49,14 +61,32 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Postage can't be blank"
       end
 
+      it '配送料の負担が--(id1)を選択してると登録できない' do
+        @item.postage_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Postage can't be blank"
+      end
+
       it '発送元の地域が選択されてないと登録できない' do
         @item.shipment_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include "Shipment can't be blank"
       end
 
+      it '発送元の地域が--(id1)を選択してると登録できない' do
+        @item.shipment_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Shipment can't be blank"
+      end
+
       it '発送までの日数が選択されてないと登録できない' do
         @item.estimated_shipping_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Estimated shipping can't be blank"
+      end
+
+      it '発送までの日数ーが--(id1)を選択してると登録できない' do
+        @item.estimated_shipping_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Estimated shipping can't be blank"
       end
