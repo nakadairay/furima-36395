@@ -11,7 +11,6 @@ class OrderAddress
     validates :block
     validates :phone_number
   end
-  validates :building
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
