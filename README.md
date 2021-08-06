@@ -56,7 +56,7 @@
 | ------------- | ---------- | ------------------------------ |
 | order         | references | null: false, foreign_key: true |
 | postcode      | string     | null: false                    |
-| prefecture_id | integer    | null: false                    |
+| shipment_id   | integer    | null: false                    |
 | city          | string     | null: false                    |
 | block         | string     | null: false                    |
 | building      | string     |                                |
