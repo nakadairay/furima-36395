@@ -8,9 +8,9 @@ RSpec.describe OrderAddress, type: :model do
     sleep 0.1
   end
 
-  describe 'ユーザー新規登録' do
-    context '新規登録できるとき' do
-      it '全ての情報が正しく入力されている場合、登録できる' do
+  describe '新規購入情報入力' do
+    context '入力問題ない場合' do
+      it '全ての情報が正しく入力されている場合、保存できる' do
         expect(@order_address).to be_valid
       end
 
@@ -19,7 +19,13 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address).to be_valid
       end
     end
-    context '新規登録できないとき' do
+    context '入力問題があるとき' do
+      it 'クレジットカード情報(token)が空だと登録できない' do
+        @order_address.token = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include "Token can't be blank"
+      end
+
       it '郵便番号が空だと登録できない' do
         @order_address.postcode = ''
         @order_address.valid?
