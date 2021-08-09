@@ -20,6 +20,18 @@ RSpec.describe OrderAddress, type: :model do
       end
     end
     context '入力問題があるとき' do
+      it 'user_idが空だと登録できない' do
+        @order_address.user_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include "User can't be blank"
+      end
+
+      it 'item_idが空だと登録できない' do
+        @order_address.item_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include "Item can't be blank"
+      end
+
       it 'クレジットカード情報(token)が空だと登録できない' do
         @order_address.token = ''
         @order_address.valid?
@@ -56,6 +68,12 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include "City can't be blank"
       end
 
+      it '番地が空だと登録できない' do
+        @order_address.block = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include "Block can't be blank"
+      end
+
       it '電話番号が空だと登録できない' do
         @order_address.phone_number = ''
         @order_address.valid?
@@ -85,6 +103,13 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include 'Phone number is invalid. Input only number'
       end
+
+      it '電話番号は英数混合だと登録できない' do
+        @order_address.phone_number = '0801234abcd'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include 'Phone number is invalid. Input only number'
+      end
+
     end
   end
 end
