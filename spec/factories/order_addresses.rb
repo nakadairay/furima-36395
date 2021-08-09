@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :order_address do
-    token {"tok_abcdefghijk00000000000000000"}
+    token { 'tok_abcdefghijk00000000000000000' }
     postcode { '992-0025' }
     shipment_id { 2 }
     city { '米沢市' }
