@@ -2,7 +2,7 @@ function preview(){
   if ( document.getElementById('item-image')){
     const ImageList = document.getElementById('image-list');
     document.getElementById('item-image').addEventListener('change', function(e){
-      const imageContent = document.querySelector('img');
+      const imageContent = document.querySelector("currentThumb");
       if (imageContent){
         imageContent.remove();
       }
@@ -10,6 +10,7 @@ function preview(){
       const blob = window.URL.createObjectURL(file);
   
       const imageElement = document.createElement('div');
+      imageElement.id = "currentThumb"
       const blobImage = document.createElement('img');
       blobImage.setAttribute('src', blob);
       imageElement.appendChild(blobImage);
