@@ -7,8 +7,8 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname
     validates :birthday
-    validates :password, :password_confirmation,
-              format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]/ }
+    validates :password, :password_confirmation, 
+              format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]/ }, on: :create
     with_options format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/ } do
       validates :last_name
       validates :first_name
@@ -21,4 +21,5 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :orders
+  has_one :card, dependent: :destroy
 end
