@@ -6,11 +6,11 @@ class OrderAddress
     validates :user_id
     validates :item_id
     validates :token
-    validates :postcode, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
-    validates :shipment_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :postcode, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, messages: 'is invalid. Include hyphen(-)' }
+    validates :shipment_id, numericality: { other_than: 1, messages: "can't be blank" }
     validates :city
     validates :block
-    validates :phone_number, format: { with: /\A\d{10}$|^\d{11}\z/, message: 'is invalid. Input only number' }
+    validates :phone_number, format: { with: /\A\d{10}$|^\d{11}\z/, messages: 'is invalid. Input only number' }
   end
 
   def save
