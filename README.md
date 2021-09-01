@@ -67,13 +67,3 @@
 
 - belongs_to :order
 
-## cards テーブル
-
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| customer_token | string     | null: false,                   |
-| user           | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
